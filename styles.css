@@ -4,8 +4,9 @@
   --card: #101215;
   --text: #f4f6f8;
   --muted: #b5bcc5;
-  --gold: #d7a545;
-  --blue: #2ca9ff;
+  --orange: #ff8a1e;
+  --purple: #8b5cf6;
+  --blue: #2f7dff;
   --line: rgba(255, 255, 255, 0.12);
   --shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
   --maxw: 1120px;
@@ -24,9 +25,10 @@ body {
   margin: 0;
   font-family: "Space Grotesk", "Manrope", sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at 18% 10%, rgba(44, 169, 255, 0.12), transparent 42%),
-    radial-gradient(circle at 80% 0%, rgba(215, 165, 69, 0.1), transparent 35%),
-    linear-gradient(160deg, #050506, #0a0a0b 48%, #0d1015 100%);
+  background: radial-gradient(circle at 18% 10%, rgba(47, 125, 255, 0.14), transparent 42%),
+    radial-gradient(circle at 80% 0%, rgba(255, 138, 30, 0.12), transparent 35%),
+    radial-gradient(circle at 56% 88%, rgba(139, 92, 246, 0.14), transparent 44%),
+    linear-gradient(160deg, #050506, #0a0a0b 48%, #090d17 100%);
   line-height: 1.6;
 }
 
@@ -46,7 +48,7 @@ img {
 }
 
 .top-strip {
-  background: linear-gradient(90deg, rgba(215, 165, 69, 0.18), rgba(44, 169, 255, 0.18));
+  background: linear-gradient(90deg, rgba(255, 138, 30, 0.2), rgba(139, 92, 246, 0.2), rgba(47, 125, 255, 0.2));
   border-bottom: 1px solid var(--line);
   font-weight: 700;
   text-align: center;
@@ -137,7 +139,7 @@ img {
 .nav-links a.active,
 .nav-links a:hover {
   color: #fff;
-  background: rgba(44, 169, 255, 0.08);
+  background: rgba(139, 92, 246, 0.16);
 }
 
 .call-chip {
@@ -149,7 +151,7 @@ img {
 }
 
 .eyebrow {
-  color: var(--gold);
+  color: var(--orange);
   text-transform: uppercase;
   letter-spacing: 0.09em;
   font-size: 0.78rem;
@@ -187,7 +189,7 @@ p {
   position: absolute;
   inset: -30% -30% auto;
   height: 520px;
-  background: conic-gradient(from 50deg, rgba(44, 169, 255, 0.18), rgba(215, 165, 69, 0.2), rgba(44, 169, 255, 0.15));
+  background: conic-gradient(from 50deg, rgba(47, 125, 255, 0.18), rgba(255, 138, 30, 0.2), rgba(139, 92, 246, 0.18));
   filter: blur(44px);
   z-index: -2;
   animation: swirl 16s linear infinite;
@@ -262,15 +264,15 @@ p {
 }
 
 .btn-primary {
-  color: #091017;
-  background: linear-gradient(135deg, var(--gold), #f0c15f);
-  box-shadow: 0 8px 26px rgba(215, 165, 69, 0.35);
+  color: #120a00;
+  background: linear-gradient(135deg, var(--orange), #ffb15e);
+  box-shadow: 0 8px 26px rgba(255, 138, 30, 0.35);
 }
 
 .btn-secondary {
   color: #fff;
-  background: linear-gradient(135deg, #137dc4, var(--blue));
-  box-shadow: 0 8px 26px rgba(44, 169, 255, 0.32);
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  box-shadow: 0 8px 26px rgba(139, 92, 246, 0.34);
 }
 
 .btn-ghost {
@@ -301,7 +303,7 @@ p {
 .cta-band {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(90deg, rgba(215, 165, 69, 0.16), rgba(44, 169, 255, 0.16));
+  background: linear-gradient(90deg, rgba(255, 138, 30, 0.16), rgba(139, 92, 246, 0.16), rgba(47, 125, 255, 0.16));
 }
 
 .cta-band .container {
@@ -337,7 +339,7 @@ p {
   min-height: 220px;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, rgba(44, 169, 255, 0.14), rgba(215, 165, 69, 0.14));
+  background: linear-gradient(145deg, rgba(47, 125, 255, 0.15), rgba(139, 92, 246, 0.13), rgba(255, 138, 30, 0.14));
   display: grid;
   place-items: center;
   font-size: 1rem;
@@ -348,6 +350,27 @@ p {
 
 .video-item:hover .video-thumb {
   transform: scale(1.03);
+}
+
+.social-logo-card {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(47, 125, 255, 0.13), rgba(139, 92, 246, 0.11), rgba(255, 138, 30, 0.12));
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.social-logo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.social-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
 }
 
 .ul-clean {
@@ -388,7 +411,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  outline: 2px solid rgba(44, 169, 255, 0.5);
+  outline: 2px solid rgba(139, 92, 246, 0.5);
   border-color: transparent;
 }
 
@@ -415,7 +438,7 @@ footer {
   right: 1rem;
   bottom: 1rem;
   z-index: 1100;
-  box-shadow: 0 14px 38px rgba(44, 169, 255, 0.35);
+  box-shadow: 0 14px 38px rgba(47, 125, 255, 0.35);
 }
 
 @media (min-width: 760px) {
