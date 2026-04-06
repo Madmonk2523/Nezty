@@ -1,5 +1,6 @@
 const menuButton = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav-links");
+const languageButtons = document.querySelectorAll(".lang-toggle");
 
 if (menuButton && nav) {
   menuButton.addEventListener("click", () => {
@@ -27,3 +28,12 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+if (languageButtons.length) {
+  languageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const translatedUrl = `https://translate.google.com/translate?sl=auto&tl=es&u=${encodeURIComponent(window.location.href)}`;
+      window.location.href = translatedUrl;
+    });
+  });
+}
