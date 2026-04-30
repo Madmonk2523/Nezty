@@ -30,10 +30,14 @@ const observer = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
 if (languageButtons.length) {
-  const searchParams = new URLSearchParams(window.location.search);
-  const urlLang = (searchParams.get("lang") || "").toLowerCase();
+  const pageUrl = new URL(window.location.href);
+  const urlLang = (pageUrl.searchParams.get("lang") || "").toLowerCase();
+  const translatedTargetLang = (
+    pageUrl.searchParams.get("_x_tr_tl") || pageUrl.searchParams.get("tl") || ""
+  ).toLowerCase();
   const htmlLang = (document.documentElement.lang || "en").toLowerCase();
-  const isSpanish = urlLang === "es" || htmlLang.startsWith("es");
+  const isSpanish =
+    urlLang === "es" || translatedTargetLang.startsWith("es") || htmlLang.startsWith("es");
 
   languageButtons.forEach((button) => {
     button.textContent = isSpanish ? "Translate to English" : "Translate to Spanish";
@@ -44,7 +48,29 @@ if (languageButtons.length) {
 
     button.addEventListener("click", () => {
       const targetLanguage = isSpanish ? "en" : "es";
-      const translatedUrl = `https://translate.google.com/translate?sl=auto&tl=${targetLanguage}&u=${encodeURIComponent(window.location.href)}`;
+
+      const currentUrl = new URL(window.location.href);
+
+      if (currentUrl.searchParams.has("_x_tr_tl")) {
+        currentUrl.searchParams.set("_x_tr_tl", targetLanguage);
+        window.location.href = currentUrl.toString();
+        return;
+      }
+
+      if (currentUrl.hostname.includes("translate.google") && currentUrl.searchParams.has("tl")) {
+        currentUrl.searchParams.set("tl", targetLanguage);
+        window.location.href = currentUrl.toString();
+        return;
+      }
+
+      const cleanUrl = new URL(window.location.href);
+      cleanUrl.searchParams.delete("lang");
+      cleanUrl.searchParams.set("lang", targetLanguage);
+
+      const translatedUrl = `https://translate.google.com/translate?sl=auto&tl=${targetLanguage}&u=${encodeURIComponent(
+        cleanUrl.toString()
+      )}`;
+
       window.location.href = translatedUrl;
     });
   });
