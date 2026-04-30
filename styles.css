@@ -428,6 +428,19 @@ p {
   transform: scale(1.03);
 }
 
+.instagram-embed-wrap {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.6rem;
+  background: linear-gradient(145deg, rgba(47, 125, 255, 0.08), rgba(255, 138, 30, 0.08));
+  box-shadow: var(--shadow);
+}
+
+.instagram-embed-wrap .instagram-media {
+  margin: 0 auto !important;
+  min-width: 100% !important;
+}
+
 .social-logo-card {
   min-height: 180px;
   display: grid;
